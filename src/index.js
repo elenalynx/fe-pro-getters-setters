@@ -5,8 +5,10 @@ function Student(name, grades) {
   Object.defineProperty(this, 'averageGrade', {
     get() {
       return this.grades.reduce((acc, curr) => acc + curr) / this.grades.length;
-    },
+    }
   });
+
+
 }
 
 export const school = {
@@ -18,6 +20,30 @@ export const school = {
     4: new Student('Anna', [67, 34, 85, 34, 85, 76]),
     5: new Student('Bohdan', [67, 25, 87, 34, 25, 76]),
     6: new Student('Eugene', [97, 34, 78, 85, 98, 65]),
-    7: new Student('Ivan', [76, 89, 78, 98, 98, 99, 89, 96]),
+    7: new Student('Ivan', [76, 89, 78, 98, 98, 99, 89, 96])
   },
+
+  get aGradeStudents() {
+    return Object.entries(this.students).reduce((acc, [, {
+      name, averageGrade
+    }]) => (averageGrade >= 90) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+  },
+
+  get bGradeStudents() {
+    return Object.entries(this.students).reduce((acc, [, {
+      name, averageGrade
+    }]) => (averageGrade >= 75 && averageGrade < 90) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+  },
+
+  get cGradeStudents() {
+    return Object.entries(this.students).reduce((acc, [, {
+      name, averageGrade
+    }]) => (averageGrade >= 60 && averageGrade < 75) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+  },
+
+  get dGradeStudents() {
+    return Object.entries(this.students).reduce((acc, [, {
+      name, averageGrade
+    }]) => (averageGrade >= 0 && averageGrade < 60) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+  }
 };
