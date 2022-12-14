@@ -26,24 +26,24 @@ export const school = {
   get aGradeStudents() {
     return Object.entries(this.students).reduce((acc, [, {
       name, averageGrade
-    }]) => (averageGrade >= 90) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+    }]) => (averageGrade >= 90) ? `${acc}${name}, ` : acc, ``).slice(0, -2);
   },
 
   get bGradeStudents() {
     return Object.entries(this.students).reduce((acc, [, {
       name, averageGrade
-    }]) => (averageGrade >= 75 && averageGrade < 90) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+    }]) => (averageGrade >= 75 && averageGrade < 90) ? `${acc}${name}, ` : acc, ``).slice(0, -2);
   },
 
   get cGradeStudents() {
     return Object.entries(this.students).reduce((acc, [, {
       name, averageGrade
-    }]) => (averageGrade >= 60 && averageGrade < 75) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+    }]) => (averageGrade >= 60 && averageGrade < 75) ? `${acc}${name}, ` : acc, ``).slice(0, -2);
   },
 
   get dGradeStudents() {
     return Object.entries(this.students).reduce((acc, [, {
       name, averageGrade
-    }]) => (averageGrade >= 0 && averageGrade < 60) ? `${acc} ${name},` : acc, ``).slice(0, -1);
+    }]) => (averageGrade >= 0 && averageGrade < 60) ? `${acc}${name}, ` : acc, ``).slice(0, -2);
   }
 };
